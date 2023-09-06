@@ -42,9 +42,11 @@ function create_comments_table(string $hostname, string $usuarios,
     $result = false;
     if ($link != false)
     {
-        $sql = 'CREATE TABLE IF NOT EXISTS Comments (id INT PRIMARY KEY AUTO_INCREMENT,
-        comment_date DATETIME NOT NULL, commentor_name NVARCHAR(50) NOT NULL,
-        comment_text NVARCHAR(1000) NOT NULL)';
+        $sql = 'CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    comment TEXT NOT NULL,
+    date_sent TIMESTAMP DEFAULT CURRENT_TIMESTAMP);';
         $result = mysqli_query($link, $sql);
     }
     return $result;
